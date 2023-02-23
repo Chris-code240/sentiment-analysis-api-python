@@ -14,7 +14,7 @@ def ai_endpoint():
     data = {"pos": None,
 "neg": None,
 "neu": None,
-"message":"It was a sucess"
+"message": []
 }
 
     try:
@@ -28,6 +28,7 @@ def ai_endpoint():
                 data['neg'] = lable.score
             elif lable.value == 'NEUTRAL':
                 data['neg'] = lable.score
+            data['message'].append(lable.value)
     except:
         abort(500)
     return jsonify(data)
